@@ -11,5 +11,8 @@ namespace Business.Constants
         public static string ProductAdded = "Product added.";
         public static string MaintenanceTime="System is on maintenance.";
         public static string ProductsListed="Products listed.";
+        public static string ProductCategoryCountError="Category count overrun";
+        public static string ProductNameExists="Product name exists";
+        public static string CategoryLimitNotAvailable="Categories are Full";
     }
 }
