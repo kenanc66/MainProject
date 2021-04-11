@@ -14,7 +14,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(p => p.ProductName).NotEmpty();
             RuleFor(p => p.UnitPrice).NotEmpty();
             RuleFor(p => p.UnitPrice).GreaterThan(0);
-            RuleFor(p => p.UnitPrice).GreaterThanOrEqualTo(10)
+            RuleFor(p => p.UnitPrice).GreaterThanOrEqualTo(1)
                 .When(p => p.CategoryId == 1).WithMessage("Products should have price of at least 10");
             
 

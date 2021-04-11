@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.CCS;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
@@ -32,7 +33,7 @@ namespace Business.Concrete
 
         [ValidationAspect(typeof(ProductValidator))]
         
-
+        [SecuredOperation("product.add,admin")]
         public IResult Add(Product product)
         {//business codes
             IResult result = BusinessRules.Run(
@@ -105,7 +106,7 @@ namespace Business.Concrete
     private IResult CheckIfCategoryLimitExceeded()
         {
             var result = _categpryService.GetAll();
-            if (result.Data.Count>15)
+            if (result.Data.Count>25)
             {
                 return new ErrorResult(Messages.CategoryLimitNotAvailable);
             }
