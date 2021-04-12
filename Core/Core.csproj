@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Aspects\Autofac\Logging\" />
     <Folder Include="Aspects\Autofac\Exception\" />
+    <Folder Include="Aspects\Autofac\Logging\" />
   </ItemGroup>
 
 </Project>
