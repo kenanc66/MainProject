@@ -52,7 +52,7 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour == 01)
+            if (DateTime.Now.Hour == 08)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
@@ -62,7 +62,6 @@ namespace Business.Concrete
         public IDataResult<List<Product>> GetAllByCategoryId(int id)
         {
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(p=>p.CategoryId==id));
-
             }
         [CacheAspect]
         [PerformanceAspect(5)]
@@ -75,7 +74,6 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(p=>p.UnitPrice>=min && p.UnitPrice<=max));
         }
-
         public IDataResult<List<ProductDetailDto>> GetProductDetails()
         {
             return new SuccessDataResult<List<ProductDetailDto>>( _productDal.GetProductDetails());
@@ -87,7 +85,6 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
     
-
     private IResult CheckIfProductCountOfCategoryCorrect(int categoryId)
     {
         var result = _productDal.GetAll(p => p.CategoryId == categoryId).Count;
