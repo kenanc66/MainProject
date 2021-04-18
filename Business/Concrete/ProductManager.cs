@@ -35,9 +35,9 @@ namespace Business.Concrete
         }
         [CacheRemoveAspect("IProductService.Get")]
         [ValidationAspect(typeof(ProductValidator))]
-        [SecuredOperation("product.add,admin")]
+        //[SecuredOperation("product.add,admin")]
         public IResult Add(Product product)
-        {//business codes
+        {
             IResult result = BusinessRules.Run(
                   CheckIfProductCountOfCategoryCorrect(product.CategoryId),
                   CheckIfProductNameExists(product.ProductName),
