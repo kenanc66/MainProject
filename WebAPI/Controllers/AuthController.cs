@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
+using DataAccess.Abstract;
 using Entities.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,11 +14,15 @@ namespace WebAPI.Controllers
     [ApiController]
     public class AuthController : Controller
     {
-        private IAuthService _authService;
+        private readonly IAuthService _authService;
+        private readonly IUserDal _userDal;
+        private readonly IUserService _userService;
 
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthService authService,IUserDal userDal,IUserService userService)
         {
             _authService = authService;
+            _userDal = userDal;
+            _userService = userService;
         }
 
         [HttpPost("login")]
@@ -36,6 +42,22 @@ namespace WebAPI.Controllers
 
             return BadRequest(result.Message);
         }
+        [SecuredOperation("user")]
+        [HttpGet("account")]
+        public ActionResult Account()
+        {
+            var testClaim = User.Claims.ElementAt(0);
+            int userId=int.Parse(testClaim.Value);
+            var userInfo = _userDal.Get(n => n.Id == userId);
+            AccountDto accountDto = new AccountDto {
+                Id = userInfo.Id,
+                FirstName =userInfo.FirstName,
+                Email = userInfo.Email,
+                LastName =userInfo.LastName
+
+            };
+            return Ok(accountDto);
+        }
 
         [HttpPost("register")]
         public ActionResult Register(UserForRegisterDto userForRegisterDto)
@@ -50,7 +72,9 @@ namespace WebAPI.Controllers
             var result = _authService.CreateAccessToken(registerResult.Data);
             if (result.Success)
             {
+                _userService.AddRole(registerResult.Data, 3);
                 return Ok(result.Data);
+
             }
 
             return BadRequest(result.Message);

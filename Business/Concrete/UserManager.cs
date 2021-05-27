@@ -28,5 +28,10 @@ namespace Business.Concrete
         {
             return _userDal.Get(u => u.Email == email);
         }
+
+        public void AddRole(User user, int role)
+        {
+            _userDal.AddRole(user, role);
+        }
     }
 }

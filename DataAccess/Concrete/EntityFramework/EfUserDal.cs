@@ -10,6 +10,19 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfUserDal : EfEntityRepositoryBase<User, NorthwindContext>, IUserDal
     {
+        public bool AddRole(User user,int role)
+        {
+            using (var context =new NorthwindContext())
+            {
+
+                var result = context.UserOperationClaims.Add(new UserOperationClaim {
+                OperationClaimId=role,
+                UserId=user.Id
+                 });
+              return context.SaveChanges()>0;
+            }
+        }
+
         public List<OperationClaim> GetClaims(User user)
         {
             using (var context = new NorthwindContext())

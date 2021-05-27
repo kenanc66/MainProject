@@ -17,10 +17,14 @@ namespace DataAccess.Concrete.EntityFramework
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Order> Orders { get; set; }
+        //public DbSet<Customer> Customers { get; set; }
+        //public DbSet<Order> Orders { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+        public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<RecipeIngredientRelation> RecipeIngredientRelation { get; set; }
+        public DbSet<RecipeObject> RecipeDetailsByIngredients { get; set; }
     }
 }

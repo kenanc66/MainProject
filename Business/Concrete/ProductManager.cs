@@ -33,6 +33,7 @@ namespace Business.Concrete
             _productDal = productDal;
             _categpryService = categoryService;
         }
+        [SecuredOperation("admin")]
         [CacheRemoveAspect("IProductService.Get")]
         [ValidationAspect(typeof(ProductValidator))]
         //[SecuredOperation("product.add,admin")]
@@ -88,7 +89,7 @@ namespace Business.Concrete
     private IResult CheckIfProductCountOfCategoryCorrect(int categoryId)
     {
         var result = _productDal.GetAll(p => p.CategoryId == categoryId).Count;
-        if (result >= 15)
+        if (result >= 100)
         {
             return new ErrorResult(Messages.ProductCategoryCountError);
         }
