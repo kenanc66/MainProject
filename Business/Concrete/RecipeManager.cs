@@ -24,7 +24,9 @@ namespace Business.Concrete
 
         public IResult Add(Recipe recipe)
         {
-            throw new NotImplementedException();
+            _recipeDal.Add(recipe);
+            return new SuccessResult(Messages.RecipeAdded);
+
         }
 
         [CacheAspect]
@@ -37,18 +39,19 @@ namespace Business.Concrete
 
         public IDataResult<List<Recipe>> GetAllByCategoryId(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Recipe>>
+                (_recipeDal.GetAll(p=>p.CategoryId==id), "cat");
+
         }
 
         public IDataResult<Recipe> GetById(int Id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Recipe>
+                 (_recipeDal.Get(p => p.Id == Id));
+
         }
 
-        public IDataResult<List<Recipe>> GetByUnitPrice(decimal min, decimal max)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public IDataResult<List<RecipeDto>> GetProductDetails()
         {
@@ -57,7 +60,7 @@ namespace Business.Concrete
 
         public IResult Update(Recipe recipe)
         {
-            throw new NotImplementedException();
+            return new SuccessResult("updated");
         }
     }
 }

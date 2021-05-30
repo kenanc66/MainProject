@@ -11,52 +11,52 @@ namespace ConsoleUI
     {//open closed principle S-O-LID
         static void Main(string[] args)
         {
-             Test1();
+             //Test1();
            // CategoryTest();
         }
 
-        private static void CategoryTest()
-        {
-            CategoryManager categoryManager = new
-                            CategoryManager(new EfCategoryDal());
-            foreach (var category in categoryManager.GetAll().Data)
-            {
-                Console.WriteLine(category.Name);
-            }
-        }
+        //private static void CategoryTest()
+        //{
+        //    CategoryManager categoryManager = new
+        //                    CategoryManager(new EfCategoryDal());
+        //    foreach (var category in categoryManager.GetAll().Data)
+        //    {
+        //        Console.WriteLine(category.Name);
+        //    }
+        //}
 
-        private static void ProductTest()
-        {
-            ProductManager productManager = new
-                            ProductManager(new EfProductDal(),new CategoryManager(new EfCategoryDal()));
-            var result = productManager.GetProductDetails();
-            if (result.Success==true)
-            {
-                foreach (var product in result.Data)
-                {
-                    Console.WriteLine(product.ProductName + "/" + product.CategoryName);
-                }
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
+        //private static void ProductTest()
+        //{
+        //    RecipeManager productManager = new
+        //                    RecipeManager(new EfRecipeDal(),new CategoryManager(new EfCategoryDal()));
+        //    var result = productManager.GetProductDetails();
+        //    if (result.Success==true)
+        //    {
+        //        foreach (var product in result.Data)
+        //        {
+        //            Console.WriteLine(product.Name + "/" + product.CategoryName);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine(result.Message);
+        //    }
             
             
-        }
-        private static void Test1()
-        {
+        //}
+        //private static void Test1()
+        //{
 
-            EfRecipeDal efRecipeDal = new EfRecipeDal();
-           var result= efRecipeDal.GetRecipeDetails();
-            foreach (var item in result)
-            {
+        //    EfRecipeDal efRecipeDal = new EfRecipeDal();
+        //   var result= efRecipeDal.GetRecipeDetails();
+        //    foreach (var item in result)
+        //    {
                 
-                Console.WriteLine(item.RecipeID);
-                Console.WriteLine(item.RecipeName);
-                Console.WriteLine(item.Ingredients);
-                Console.WriteLine(item.CategoryName);
-            }
+        //        Console.WriteLine(item.RecipeID);
+        //        Console.WriteLine(item.RecipeName);
+        //        Console.WriteLine(item.Ingredients);
+        //        Console.WriteLine(item.CategoryName);
+        //    }
            
             //Console.WriteLine(context.RecipeDetailsByIngredients.ToList());
 
@@ -72,6 +72,6 @@ namespace ConsoleUI
         //        Console.WriteLine(item.CategoryId);
         //        Console.WriteLine(item.Category.Name);
         //    }
-        }
+        
    
 

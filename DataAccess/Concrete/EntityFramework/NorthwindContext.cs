@@ -12,10 +12,10 @@ namespace DataAccess.Concrete.EntityFramework
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer
-                (@"Server=(localdb)\mssqllocaldb;Database=Northwind;Trusted_Connection=true");
+                (@"Server=(localdb)\mssqllocaldb;Database=ProjectSimplified;Trusted_Connection=true");
 
         }
-        public DbSet<Product> Products { get; set; }
+        
         public DbSet<Category> Categories { get; set; }
         //public DbSet<Customer> Customers { get; set; }
         //public DbSet<Order> Orders { get; set; }
@@ -23,8 +23,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<User> Users { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
-        public DbSet<Ingredient> Ingredients { get; set; }
-        public DbSet<RecipeIngredientRelation> RecipeIngredientRelation { get; set; }
-        public DbSet<RecipeObject> RecipeDetailsByIngredients { get; set; }
+        
+        
     }
 }

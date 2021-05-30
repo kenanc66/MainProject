@@ -10,7 +10,8 @@ namespace Business.Constants
     public static class Messages
     {
         public static string ProductNameInvalid = "Invalid Name <2";
-        public static string ProductAdded = "Product added.";
+        public static string RecipeAdded = "Recipe added.";
+        public static string CategoryAdded = "Category Added.";
         public static string MaintenanceTime="System is on maintenance.";
         public static string ProductsListed="Products listed.";
         public static string ProductCategoryCountError="Category count overrun";

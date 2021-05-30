@@ -11,7 +11,7 @@ namespace Business.Abstract
     {
         IDataResult<List<Recipe>> GetAll();
         IDataResult<List<Recipe>> GetAllByCategoryId(int id);
-        IDataResult<List<Recipe>> GetByUnitPrice(decimal min, decimal max);
+        
         IDataResult<List<RecipeDto>> GetProductDetails();
         IResult Add(Recipe recipe);
         IResult Update(Recipe recipe);

@@ -30,6 +30,11 @@ namespace Business.Concrete
             return new SuccessDataResult <Category>( _categoryDal.Get
                 (c => c.Id == categoryId));
         }
-       
+        public IResult Add (Category category)
+        {
+            _categoryDal.Add(category);
+            return new SuccessResult(Messages.CategoryAdded);
+        }
+
     }
 }

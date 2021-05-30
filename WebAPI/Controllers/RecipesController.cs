@@ -72,18 +72,9 @@ namespace WebAPI.Controllers
 
         public IActionResult GetFileAsync(string fileName)
         {
-            //var fileFromDb = db.Recipes.FirstOrDefault(n => n.DataPath == fileName);
-
-            // dosyaya erişim için gerekli ilişkisel sorgulamalar yapılacak
-            // erişim izni yoksa ilgili http response dönülecek
-            //if (fileFromDb == null)
-            //    return NoContent();
-
-
-            string filePath = Path.Combine("Uploads", fileName);
+          string filePath = Path.Combine("Uploads", fileName);
             string mimeType = MimeKit.MimeTypes.GetMimeType(fileName);
-
-            var fileStream = new FileStream(filePath, FileMode.Open);
+                        var fileStream = new FileStream(filePath, FileMode.Open);
 
             return new FileStreamResult(fileStream, mimeType);
 
