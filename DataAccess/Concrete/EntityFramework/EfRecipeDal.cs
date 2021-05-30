@@ -13,6 +13,33 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfRecipeDal : EfEntityRepositoryBase<Recipe, NorthwindContext>, IRecipeDal
     {
+        //public List<RecipeDto> GetAllByCategoryId()
+        //{
+        //    using (NorthwindContext context = new NorthwindContext())
+        //    {
+
+        //        var result = from p in context.Recipes
+        //                     join c in context.Categories
+        //                        on p.CategoryId equals c.Id
+
+
+        //                     select new RecipeDto
+        //                     {
+        //                         RecipeID = p.Id,
+        //                         RecipeName = p.Name,
+        //                         Ingredients = p.Ingredients,
+        //                         RecipeExplanation = p.RecipeExplanation,
+
+        //                         ImageUrl = "https://localhost:44396/api/recipes/get/" + p.ImageUrl,
+        //                         CategoryId = p.CategoryId,
+        //                         CategoryName = c.Name,
+
+
+        //                     };
+        //        return result.ToList();
+        //    }
+        //}
+
         List<RecipeDto> IRecipeDal.GetRecipeDetails()
         {
             using (NorthwindContext context = new NorthwindContext())

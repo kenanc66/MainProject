@@ -9,7 +9,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.InMemory
 {
-    public class InMemoryProductDal : IRecipeDal
+    public class InMemoryProductDal //: IRecipeDal
     {
         List<Recipe> _products;
         public InMemoryProductDal()
@@ -43,7 +43,7 @@ namespace DataAccess.Concrete.InMemory
             return _products;
         }
 
-        public List<Recipe> GetAll(Expression<Func<Recipe, bool>> filter = null)
+        public List<Recipe> GetAll(Expression<Func<RecipeDto, bool>> filter = null)
         {
             throw new NotImplementedException();
         }

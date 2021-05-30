@@ -28,7 +28,7 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             var result = _recipeService.GetAll();
             if (result.Success)
             {
@@ -57,8 +57,8 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpGet("getproductdetails")]
-        public IActionResult GetProductDetails(int categoryId)
+        [HttpGet("getrecipedetails")]
+        public IActionResult GetProductDetails()
         {
             var result = _recipeService.GetProductDetails();
             if (result.Success)

@@ -37,13 +37,16 @@ namespace Business.Concrete
         }
 
 
+        
         public IDataResult<List<Recipe>> GetAllByCategoryId(int id)
         {
             return new SuccessDataResult<List<Recipe>>
-                (_recipeDal.GetAll(p=>p.CategoryId==id), "cat");
-
+                (_recipeDal.GetAll(p => p.CategoryId == id),"sa");
         }
-
+        public IDataResult<List<RecipeDto>> GetProductDetails()
+        {
+            return new SuccessDataResult<List<RecipeDto>>(_recipeDal.GetRecipeDetails());
+        }
         public IDataResult<Recipe> GetById(int Id)
         {
             return new SuccessDataResult<Recipe>
@@ -53,14 +56,13 @@ namespace Business.Concrete
 
         
 
-        public IDataResult<List<RecipeDto>> GetProductDetails()
-        {
-            return new SuccessDataResult<List<RecipeDto>>(_recipeDal.GetRecipeDetails());
-        }
+       
 
         public IResult Update(Recipe recipe)
         {
             return new SuccessResult("updated");
         }
+
+       
     }
 }

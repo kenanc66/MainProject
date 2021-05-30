@@ -8,6 +8,7 @@ namespace Entities.DTOs
 {
     public class RecipeDto : IDto
     {
+        
         public int RecipeID { get; set; }
         public string RecipeName { get; set; }
         public int CategoryId { get; set; }

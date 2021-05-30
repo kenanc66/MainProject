@@ -10,5 +10,6 @@ namespace DataAccess.Abstract
     public interface IRecipeDal :IEntityRepository<Recipe>
     {
         List<RecipeDto> GetRecipeDetails();
+        //List<RecipeDto> GetAllByCategoryId();
     }
 }
